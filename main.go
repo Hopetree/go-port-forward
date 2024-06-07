@@ -44,7 +44,7 @@ func main() {
 		wg.Add(1)
 		go func(pf PortForward) {
 			defer wg.Done()
-			startPortForward(ctx, pf, cancel)
+			startPortForward(ctx, cancel, pf)
 		}(pf)
 	}
 	wg.Wait()
@@ -67,7 +67,7 @@ func readConfig(filename string) (*Config, error) {
 }
 
 // startPortForward 启动端口转发服务
-func startPortForward(ctx context.Context, pf PortForward, cancel context.CancelFunc) {
+func startPortForward(ctx context.Context, cancel context.CancelFunc, pf PortForward) {
 	sourcePort := fmt.Sprintf(":%v", pf.LocalPort)
 	destinationAddress := fmt.Sprintf("%s:%v", pf.RemoteAddr, pf.RemotePort)
 
