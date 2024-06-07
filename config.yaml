@@ -1,0 +1,9 @@
+port_forwards:
+  - local_port: 8080
+    remote_addr: "100.88.88.202"
+    remote_port: 8080
+    protocol_type: "tcp"
+  - local_port: 7001
+    remote_addr: "100.88.88.202"
+    remote_port: 7001
+    protocol_type: "tcp"
